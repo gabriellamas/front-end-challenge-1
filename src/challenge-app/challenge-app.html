@@ -1,4 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../challenge-store/challenge-store.html">
 
 <dom-module id="challenge-app">
   <template>
@@ -7,7 +9,12 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <iron-ajax
+      auto
+      url="{{productsUrl}}"
+      handle-as="json"
+      on-response="_handleResponse"></iron-ajax>
+    <challenge-store products="{{products}}"></challenge-store>
   </template>
 
   <script>
@@ -16,11 +23,16 @@
       is: 'challenge-app',
 
       properties: {
-        prop1: {
+        productsUrl: {
           type: String,
-          value: 'challenge-app',
-        },
+          value: 'products.json',
+        }
       },
+
+      _handleResponse: function(event) {
+        var res = event.detail.response;
+        this.set('products', res.products);
+      }
 
     });
   </script>

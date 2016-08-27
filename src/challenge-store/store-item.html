@@ -1,27 +1,23 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="store-item.html">
 
-<dom-module id="challenge-store">
+<dom-module id="store-item">
   <template>
     <style>
       :host {
         display: block;
       }
     </style>
-    <template is="dom-repeat" items="{{products}}">
-      <store-item product="{{product}}"></store-item>
-    </template>
+
   </template>
 
   <script>
     Polymer({
 
-      is: 'challenge-store',
+      is: 'store-item',
 
       properties: {
-        products: Array
+        Product: Object
       }
-
     });
   </script>
 </dom-module>
