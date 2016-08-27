@@ -10,8 +10,17 @@
       :host {
         display: block;
       }
+
+      paper-card {
+        --paper-card-header-image-text: {
+          span {
+            text-decoration: line-through;
+          }
+        }
+      }
     </style>
     <paper-card
+      id="card"
       heading="{{product.actual_price}}"
       image="{{product.image}}">
       <div class="card-content">{{product.name}}</div>
@@ -29,6 +38,16 @@
 
       properties: {
         product: Object
+      },
+
+      observers: [
+        '_setHeading(product.on_sale, product.regular_price, product.actual_price, product.discount_percentage)'
+      ],
+
+      _setHeading: function(onSale, regular, actual){
+        if(!onSale) return;
+        var heading = this.$.card.querySelector('.title-text');
+        heading.innerHTML = '<span>' + regular + '</span> ' + actual;
       }
     });
   </script>
