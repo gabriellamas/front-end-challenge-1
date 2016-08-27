@@ -1,12 +1,18 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../shared-styles.html">
 <link rel="import" href="../challenge-store/challenge-store.html">
 
-<dom-module id="challenge-app">
+<dom-module id="challenge-app" include="shared-styles">
   <template>
     <style>
       :host {
         display: block;
+      }
+      challenge-store {
+        max-width: 960px;
+        margin-left: auto;
+        margin-right: auto;
       }
     </style>
     <iron-ajax

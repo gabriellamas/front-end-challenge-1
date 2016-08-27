@@ -1,14 +1,37 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../shared-styles.html">
 <link rel="import" href="store-item.html">
 
-<dom-module id="challenge-store">
+<dom-module id="challenge-store" include="shared-styles">
   <template>
     <style>
       :host {
         display: block;
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-justified);
+        margin: 0 16px 32px 16px;
+        padding: 0;
+        list-style: none;
+      }
+      store-item {
+        -webkit-flex: 1 1;
+        flex: 1 1;
+        -webkit-flex-basis: 33%;
+        flex-basis: 33%;
+        max-width: 33%;
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+
+      @media (max-width: 767px) {
+        store-item {
+          flex-basis: 49%;
+          max-width: 49%;
+        }
       }
     </style>
-    <template is="dom-repeat" items="{{products}}">
+    <template is="dom-repeat" items="{{products}}" as="product">
       <store-item product="{{product}}"></store-item>
     </template>
   </template>
@@ -21,7 +44,6 @@
       properties: {
         products: Array
       }
-
     });
   </script>
 </dom-module>
