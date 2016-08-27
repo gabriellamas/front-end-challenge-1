@@ -1,0 +1,7 @@
+{
+  "name": "challenge-app",
+  "short_name": "challenge-app",
+  "description": "Challenge for Amaro team",
+  "start_url": "/",
+  "display": "standalone"
+}
